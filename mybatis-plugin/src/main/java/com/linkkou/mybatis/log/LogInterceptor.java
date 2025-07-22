@@ -149,7 +149,8 @@ public class LogInterceptor implements Interceptor {
      */
     private String replaceFirst(String originalSql, String propertyName, String parameterValue) {
         //(\$|#)\{\s*epNo2((?!\{).)*}
-        return originalSql.replaceFirst("(\\$|#)\\{\\s*" + Matcher.quoteReplacement(propertyName) + "((?!\\{).)*}", Matcher.quoteReplacement(parameterValue));
+        return originalSql.replaceFirst("(\\$|#)\\{\\s*" + Matcher.quoteReplacement(propertyName) + "((?!\\{).)*}",
+            Matcher.quoteReplacement(parameterValue.replace("$", "\\$")));
     }
 
     /**
